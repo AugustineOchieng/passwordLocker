@@ -4,8 +4,7 @@ from user import User
 
 class TestUser(unittest.TestCase):
   def setUp(self):
-    self.new_user = User("Gus", "Will", "0712345678",
-                         "gus@gmail.com", "gus", "gus00")
+    self.new_user = User("Gus", "Will", "0712345678","gus@gmail.com", "gus", "gus00")
 
   def test_init(self):
     self.assertEqual(self.new_user.first_name, "Gus")
@@ -15,5 +14,5 @@ class TestUser(unittest.TestCase):
     self.assertEqual(self.new_user.password, "gus00")
 
 
-if __name__ == '_main_':
+if __name__ == '__main__':
   unittest.main()
