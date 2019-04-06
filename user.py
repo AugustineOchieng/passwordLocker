@@ -15,3 +15,10 @@ class User:
 
     def tearDown(self):
         User.user_details = []
+
+    @classmethod
+    def user_exists(cls, number):
+        for user in cls.user_details:
+            if user.phone_number == number:
+                return True
+        return False
