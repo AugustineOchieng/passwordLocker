@@ -1,9 +1,11 @@
 import unittest
 from credentials import Credentials
 
+
 class TestCredentials(unittest.TestCase):
   def setUp(self):
-    self.new_credentials = Credentials("gus00", "Twitter", "Gus", "Will", "0712345678", "gus@gmail.com","gustin")
+    self.new_credentials = Credentials(
+        "gus00", "Twitter", "Gus", "Will", "0712345678", "gus@gmail.com", "gustin")
 
   def test_init(self):
     self.assertEqual(self.new_credentials.current_password, "gus00")
@@ -15,9 +17,29 @@ class TestCredentials(unittest.TestCase):
     self.assertEqual(self.new_credentials.username, "gustin")
 
   def test_save_credentials(self):
-        self.new_credentials.save_credentials()
-        self.assertEqual(len(Credentials.credentials_details), 1)
+    self.new_credentials.save_credentials()
+    self.assertEqual(len(Credentials.credentials_details), 1)
 
+  def test_save_multiple_credentials(self):
+    self.new_credentials.save_credentials()
+    test_credentials = Credentials("Twitter", "Gus", "Will", "0712345678",
+                         "gus@gmail.com", "gus", "gus00")
+    test_credentials.save_credentials()
+    self.assertEqual(len(Credentials.credentials_details), 2)
+
+  def tearDown(self):
+     Credentials.credentials_details = []
+
+  def test_credentials_exists(self):
+      self.new_credentials.save_credentials()
+      test_credentials = Credentials("Twitter", "Gus", "Will", "0712345678", "gus@gmail.com", "gus", "gus00")
+      test_credentials.save_credentials()
+
+      credentials_exists = Credentials.credentials_exists("0712345678")
+      self.assertTrue(credentials_exists)
+
+  def test_display_all_credentials(self):
+      self.assertEqual(Credentials.display_credentials(),Credentials.credentials_details)
 
 if __name__ == '__main__':
     unittest.main()
