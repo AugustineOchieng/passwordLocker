@@ -1,3 +1,4 @@
+import pyperclip
 class Credentials:
    credentials_details = []
 
@@ -25,7 +26,10 @@ class Credentials:
 
    @classmethod
    def display_contacts(cls):
-        '''
-        method that returns the contact list
-        '''
-        return cls.contact_list
+        
+        return cls.credentials_details
+   def test_copy_email(self):
+      self.new_credentials.save_credentials()
+      Credentials.copy_email("0712345678")
+
+      self.assertEqual(self.new_credentials.email, pyperclip.paste())
