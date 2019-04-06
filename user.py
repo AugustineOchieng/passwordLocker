@@ -14,6 +14,4 @@ class User:
         User.user_details.append(self)
 
     def tearDown(self):
-         User.user_details = []
-
-
+        User.user_details = []
