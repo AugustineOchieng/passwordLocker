@@ -4,11 +4,12 @@ from user import User
 import random
 
 
-def create_credentials(fname, lname, phone, email, username, account, password ):
+def create_credentials(fname, lname, phone, email, username, account, password):
     '''
     Function to create a new contact
     '''
-    new_credentials = Credentials(fname, lname, phone, email, username, account, password)
+    new_credentials = Credentials(
+        fname, lname, phone, email, username, account, password)
     return new_credentials
 
 
@@ -39,11 +40,13 @@ def check_existing_user(pass_word):
     '''
     return User.user_exists(pass_word)
 
+
 def check_existing_credentials(acc):
     '''
     Function that check if a contact exists with that number and return a Boolean
     '''
     return Credentials.credentials_exists(acc)
+
 
 def display_credentials():
     '''
@@ -53,16 +56,29 @@ def display_credentials():
 
 
 def main():
-  print("Hello Welcome to your PasswordLocker app.Explore your accounts and feel free to add another. What is your name?")
-  print("What is your name\n")
-  user_name = input()
 
+ while True:
 
-  print(f"Hello {user_name}. what would you like to do?")
-  print('\n')
+                    print(
+                        "Hello Welcome to your PasswordLocker app.Explore your accounts and feel free to add another. What is your name?")
+                    print("What is your name\n")
+                    user_name = input()
 
+                    print(f"Hello {user_name}. what would you like to do?")
+                    print('\n')
 
-while True:
+                    print("\n Login")
+                    print("="*100)
+
+                    print("+" * 100)
+                    print("\n Username......")
+
+                    print("=" * 100)
+                    u_name = input()
+
+                    print("\n Password.....")
+                    print("+" * 100)
+                    pass_word = input()
                     print(
                         "Use these short codes : cc - create a new account, dc - display existing accounts, fc -find an account, ex -exit your credentials ")
 
@@ -70,36 +86,6 @@ while True:
 
                     if short_code == 'cc':
 
-                            print("\n Login")
-                            print("*"*100)
-
-                            print("*" * 100)
-                            print("\n Username:::")
-
-                            print("*" * 100)
-                            u_name = input()
-
-                            print("\n Password:::")
-                            print("*" * 100)
-                            pass_word = input()
-
-                            
-
-                            print("Phone number ...")
-                            p_number = input()
-
-                            print("Email address ...")
-                            e_address = input()
-
-                            print("Username ...")
-                            u_name = input()
-
-                            print("Current Password ...")
-                            pass_word = input()
-
-                            print("Account ...")
-                            acc = input()
-                            
                             print("New Account")
                             print("-"*10)
 
@@ -118,15 +104,28 @@ while True:
                             print("Username ...")
                             u_name = input()
 
-                            print("Current Password ...")
+                            print(
+                                "\nFor a password use  pass : to create a password OR  word : to  use computer generated password\n")
+                            print(' - ' * 100)
                             pass_word = input()
+
+                            if pass_word == 'pass':
+                             print("\nEnter Password")
+                            pass_word = input()
+
+                    elif pass_word == 'word':
+                            characters = "abcde01234fghILKLM56789NopqrstuvWxyz"
+                            p_word = "".join(random.choice(characters)
+                                             for _ in range(8))
+                            print(
+                                f"The computer generated password is: {p_word}\n")
 
                             print("Account ...")
                             acc = input()
 
                             # create and save new contact.
                             save_credentials(create_credentials(
-                                f_name, l_name, p_number, e_address,u_name,pass_word,acc))
+                                f_name, l_name, p_number, e_address, u_name, pass_word, acc))
                             print('\n')
                             print(f"New Contact {f_name} {l_name} created")
                             print('\n')
@@ -134,7 +133,8 @@ while True:
                     elif short_code == 'dc':
 
                             if display_credentials():
-                                    print("Here is a list of all your credentials")
+                                    print(
+                                        "Here is a list of all your credentials")
                                     print('\n')
 
                                     for credentials in display_credentials():
@@ -173,6 +173,8 @@ while True:
                     else:
                             print(
                                 "I really didn't get that. Please use the short codes")
+
+
 if __name__ == '__main__':
 
     main()

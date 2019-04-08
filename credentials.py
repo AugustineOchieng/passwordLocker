@@ -1,4 +1,3 @@
-import pyperclip
 class Credentials:
    credentials_details = []
 
