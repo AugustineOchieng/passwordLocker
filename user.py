@@ -1,3 +1,4 @@
+import pyperclip
 class User:
     user_details = []
 
@@ -22,3 +23,20 @@ class User:
             if user.phone_number == number:
                 return True
         return False
+
+    @classmethod
+    def user_exists(cls, number):
+        for user in cls.user_details:
+            if user.phone_number == number:
+                return True
+        return False
+
+    @classmethod
+    def display_credentials(cls):
+
+        return cls.user_details
+
+    @classmethod
+    def copy_email(cls, number):
+      user_found = User.find_by_number(number)
+      pyperclip.copy(user_found.email_address)

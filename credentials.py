@@ -16,6 +16,12 @@ class Credentials:
 
    def tearDown(self):
         Credentials.credentials_details = []
+   
+   @classmethod
+   def test_find_credentials_by_number(cls, number):
+      for credentials in cls.credentials_details:
+            if credentials.phone_number == number:
+                return credentials
 
    @classmethod
    def credentials_exists(cls, number):
@@ -25,11 +31,11 @@ class Credentials:
         return False
 
    @classmethod
-   def display_contacts(cls):
-        
-        return cls.credentials_details
-   def test_copy_email(self):
-      self.new_credentials.save_credentials()
-      Credentials.copy_email("0712345678")
+   def display_credentials(cls):
 
-      self.assertEqual(self.new_credentials.email, pyperclip.paste())
+        return cls.credentials_details
+
+   @classmethod
+   def copy_email(cls, number):
+      credentials_found = Credentials.find_by_number(number)
+      pyperclip.copy(credentials_found.email_address)

@@ -1,3 +1,4 @@
+import pyperclip
 import unittest
 from credentials import Credentials
 
@@ -39,7 +40,13 @@ class TestCredentials(unittest.TestCase):
       self.assertTrue(credentials_exists)
 
   def test_display_all_credentials(self):
-      self.assertEqual(Credentials.display_credentials(),Credentials.credentials_details)
+      self.assertEqual(Credentials.display_credentials(), Credentials.credentials_details)
+  def test_copy_email_address(self):
 
+      self.new_credentials.save_credentials()
+      Credentials.copy_email_address("0712345678")
+
+      self.assertEqual(self.new_credentials.email_address,pyperclip.paste())
+  
 if __name__ == '__main__':
     unittest.main()
