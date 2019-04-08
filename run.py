@@ -51,19 +51,12 @@ def display_credentials():
     '''
     return Credentials.display_credentials()
 
-# Login authorization
-
-
-def loginauth(username, password):
-    if username in user:
-        if password == user[username]["password"]:
-            print("Login successful")
-            return True
-    return False
 
 def main():
   print("Hello Welcome to your PasswordLocker app.Explore your accounts and feel free to add another. What is your name?")
+  print("What is your name\n")
   user_name = input()
+
 
   print(f"Hello {user_name}. what would you like to do?")
   print('\n')
@@ -76,36 +69,48 @@ while True:
                     short_code = input().lower()
 
                     if short_code == 'cc':
-                              while True:
-                               username = input("Username: ")
-                              if not len(username) > 0:
-                               print("Username can't be blank")
-                    else:
-                              break
-                              while True:
-                                password = input("Password: ")
-                              if not len(password) > 0:
-                               print("Password can't be blank")
-                   
-else:
-                              break
 
-                              if loginauth(username, password):
-                                  return credentials(username)
+                            print("\n Login")
+                            print("*"*100)
 
-                              print("Invalid username or password")
+                            print("*" * 100)
+                            print("\n Username:::")
 
-                              print("New Account")
-                              print("-"*10)
+                            print("*" * 100)
+                            u_name = input()
 
-                              print("First name ....")
-                              f_name = input()
+                            print("\n Password:::")
+                            print("*" * 100)
+                            pass_word = input()
 
-                              print("Last name ...")
-                              l_name = input()
+                            
 
-                              print("Phone number ...")
-                              p_number = input()
+                            print("Phone number ...")
+                            p_number = input()
+
+                            print("Email address ...")
+                            e_address = input()
+
+                            print("Username ...")
+                            u_name = input()
+
+                            print("Current Password ...")
+                            pass_word = input()
+
+                            print("Account ...")
+                            acc = input()
+                            
+                            print("New Account")
+                            print("-"*10)
+
+                            print("First name ....")
+                            f_name = input()
+
+                            print("Last name ...")
+                            l_name = input()
+
+                            print("Phone number ...")
+                            p_number = input()
 
                             print("Email address ...")
                             e_address = input()
@@ -134,7 +139,7 @@ else:
 
                                     for credentials in display_credentials():
                                             print(
-                                                f"{credentials.account} {credentials.username} .....{credentials.email}")
+                                                f"{credentials.account} {credentials.first_name} .....{credentials.phone_number}")
 
                                     print('\n')
                             else:
@@ -145,12 +150,12 @@ else:
 
                     elif short_code == 'fc':
 
-                            print("Enter the account you want to search for")
+                            print("Enter the number you want to search for")
 
-                            search_account = input()
-                            if check_existing_credentials(search_account):
+                            search_number = input()
+                            if check_existing_credentials(search_number):
                                     search_credentials = find_credentials(
-                                        search_account)
+                                        search_number)
                                     print(
                                         f" username, account, password{search_credentials.first_name} {search_credentials.last_name}")
                                     print('-' * 20)
