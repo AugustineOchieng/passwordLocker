@@ -18,13 +18,6 @@ class User:
         User.user_details = []
 
     @classmethod
-    def user_exists(cls, number):
-        for user in cls.user_details:
-            if user.phone_number == number:
-                return True
-        return False
-
-    @classmethod
     def user_exists(cls, pass_word):
         for user in cls.user_details:
             if user.password == pass_word:

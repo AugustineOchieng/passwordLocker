@@ -45,22 +45,24 @@ def check_existing_credentials(acc):
     '''
     return Credentials.credentials_exists(acc)
 
-
-def check_existing_user(number):
-    '''
-    Function that check if a contact exists with that number and return a Boolean
-    '''
-    return User.user_exists(number)
-
 def display_credentials():
     '''
     Function that returns all the saved contacts
     '''
     return Credentials.display_credentials()
 
+# Login authorization
+
+
+def loginauth(username, password):
+    if username in user:
+        if password == user[username]["password"]:
+            print("Login successful")
+            return True
+    return False
 
 def main():
-  print("Hello Welcome to your credentials. What is your name?")
+  print("Hello Welcome to your PasswordLocker app.Explore your accounts and feel free to add another. What is your name?")
   user_name = input()
 
   print(f"Hello {user_name}. what would you like to do?")
@@ -74,6 +76,24 @@ while True:
                     short_code = input().lower()
 
                     if short_code == 'cc':
+                              while True:
+                              username = input("Username: ")
+                              if not len(username) > 0:
+                              print("Username can't be blank")
+                              else:
+                              break
+                              while True:
+                               password = input("Password: ")
+                               if not len(password) > 0:
+                                print("Password can't be blank")
+                              else:
+                             break
+
+                              if loginauth(username, password):
+                              return session(username)
+                             else:
+                            print("Invalid username or password")
+
                             print("New Account")
                             print("-"*10)
 
