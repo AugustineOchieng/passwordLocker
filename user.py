@@ -25,9 +25,9 @@ class User:
         return False
 
     @classmethod
-    def user_exists(cls, number):
+    def user_exists(cls, pass_word):
         for user in cls.user_details:
-            if user.phone_number == number:
+            if user.password == pass_word:
                 return True
         return False
 
@@ -36,7 +36,3 @@ class User:
 
         return cls.user_details
 
-    @classmethod
-    def copy_email(cls, number):
-      user_found = User.find_by_number(number)
-      pyperclip.copy(user_found.email_address)

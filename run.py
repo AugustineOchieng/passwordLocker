@@ -30,14 +30,20 @@ def find_credentials(acc):
     '''
     Function that finds a contact by number and returns the contact
     '''
-    return Credentials.find_by_number(acc)
+    return Credentials.find_credentials_by_acc(acc)
 
 
-def check_existing_credentials(number):
+def check_existing_user(pass_word):
     '''
     Function that check if a contact exists with that number and return a Boolean
     '''
-    return Credentials.credentials_exists(number)
+    return User.user_exists(pass_word)
+
+def check_existing_credentials(acc):
+    '''
+    Function that check if a contact exists with that number and return a Boolean
+    '''
+    return Credentials.credentials_exists(acc)
 
 
 def check_existing_user(number):

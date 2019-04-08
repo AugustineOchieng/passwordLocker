@@ -18,7 +18,7 @@ class Credentials:
         Credentials.credentials_details = []
    
    @classmethod
-   def test_find_credentials_by_acc(cls, acc):
+   def find_credentials_by_acc(cls, acc):
       for credentials in cls.credentials_details:
             if credentials.account == acc:
                 return credentials
