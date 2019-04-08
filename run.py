@@ -91,21 +91,21 @@ else:
                               break
 
                               if loginauth(username, password):
-                              return (username)
-                    else:
-                            print("Invalid username or password")
+                                  return credentials(username)
 
-                            print("New Account")
-                            print("-"*10)
+                              print("Invalid username or password")
 
-                            print("First name ....")
-                            f_name = input()
+                              print("New Account")
+                              print("-"*10)
 
-                            print("Last name ...")
-                            l_name = input()
+                              print("First name ....")
+                              f_name = input()
 
-                            print("Phone number ...")
-                            p_number = input()
+                              print("Last name ...")
+                              l_name = input()
+
+                              print("Phone number ...")
+                              p_number = input()
 
                             print("Email address ...")
                             e_address = input()
