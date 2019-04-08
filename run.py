@@ -128,12 +128,12 @@ while True:
                     elif short_code == 'dc':
 
                             if display_credentials():
-                                    print("Here is a list of all your contacts")
+                                    print("Here is a list of all your credentials")
                                     print('\n')
 
                                     for credentials in display_credentials():
                                             print(
-                                                f"{credentials.first_name} {credentials.last_name} .....{credentials.phone_number}")
+                                                f"{credentials.account} {credentials.username} .....{credentials.email}")
 
                                     print('\n')
                             else:
@@ -144,12 +144,12 @@ while True:
 
                     elif short_code == 'fc':
 
-                            print("Enter the number you want to search for")
+                            print("Enter the account you want to search for")
 
-                            search_number = input()
-                            if check_existing_credentials(search_number):
+                            search_account = input()
+                            if check_existing_credentials(search_account):
                                     search_credentials = find_credentials(
-                                        search_number)
+                                        search_account)
                                     print(
                                         f" username, account, password{search_credentials.first_name} {search_credentials.last_name}")
                                     print('-' * 20)
