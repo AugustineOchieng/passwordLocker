@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.6
 from credentials import Credentials
 from user import User
+import random
 
 
 def create_credentials(fname, lname, phone, email, username, account, password ):
@@ -25,19 +26,25 @@ def del_credentials(credentials):
     credentials.delete_credentials()
 
 
-def find_credentials(number):
+def find_credentials(acc):
     '''
     Function that finds a contact by number and returns the contact
     '''
-    return Credentials.find_by_number(number)
+    return Credentials.find_by_number(acc)
 
 
 def check_existing_credentials(number):
     '''
     Function that check if a contact exists with that number and return a Boolean
     '''
-    return Credentials.credentials_exist(number)
+    return Credentials.credentials_exists(number)
 
+
+def check_existing_user(number):
+    '''
+    Function that check if a contact exists with that number and return a Boolean
+    '''
+    return User.user_exists(number)
 
 def display_credentials():
     '''

@@ -18,15 +18,15 @@ class Credentials:
         Credentials.credentials_details = []
    
    @classmethod
-   def test_find_credentials_by_number(cls, number):
+   def test_find_credentials_by_acc(cls, acc):
       for credentials in cls.credentials_details:
-            if credentials.phone_number == number:
+            if credentials.account == acc:
                 return credentials
 
    @classmethod
-   def credentials_exists(cls, number):
+   def credentials_exists(cls, acc):
         for credentials in cls.credentials_details:
-            if credentials.phone_number == number:
+            if credentials.account == acc:
                 return True
         return False
 
@@ -35,7 +35,3 @@ class Credentials:
 
         return cls.credentials_details
 
-   @classmethod
-   def copy_email(cls, number):
-      credentials_found = Credentials.find_by_number(number)
-      pyperclip.copy(credentials_found.email_address)
